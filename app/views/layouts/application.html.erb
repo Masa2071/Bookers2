@@ -10,6 +10,37 @@
   </head>
 
   <body>
+    <div id="slidemenu">
+      <ul class="nav">
+        <% if user_signed_in? %>
+          <li class="">
+            <%= link_to "Home", user_path(current_user.id) %>
+          </li>
+          <li class="">
+            <!--<= link_to 'Users', "#" %>-->
+          </li>
+          <li class="">
+            <!--<= link_to 'Books', "#" %>-->
+          </li>
+          <li class="">
+            <%= link_to "ログアウト", destroy_user_session_path, method: :delete %>
+          </li>
+        <% else %>
+          <li class="">
+            <!--<= link_to "Home", "#" %>-->
+          </li>
+          <li class="">
+            <!--<= link_to "About", "#" %>-->
+          </li>
+          <li class="">
+            <%= link_to "sign up", new_user_registration_path %>
+          </li>
+          <li class="">
+            <%= link_to "login", new_user_session_path %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
     <%= yield %>
   </body>
 </html>
