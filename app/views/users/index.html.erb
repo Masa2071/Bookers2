@@ -1,17 +1,19 @@
 <h2>User</h2>
  <table>
-  <tbody>
+  <thead>
     <tr>
       <th>image</th>
       <th>name</th>
       <th colspan="3"></th>
     </tr>
-    <% @users.each do |user| %>
+  </thead>  
+  <tbody>
+  <% @users.each do |user| %>
     <tr>
       <td><%= attachment_image_tag user, :profile_image, :fill, 40, 40, fallback: "no_image.jpg"%></td>
       <td><%= user.name %></td>
       <td><%= link_to "show", user_path(user.id) %></td>
     </tr>
-    <% end %>
+  <% end %>
   </tbody>
 </table>
