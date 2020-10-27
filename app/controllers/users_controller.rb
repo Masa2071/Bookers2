@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   def index
     # ユーザの全データ取得
     @users = User.all
+    # ログイン中のユーザデータ取得
+    @user = current_user
+    #新規投稿
+    @book = Book.new
   end
 
   def edit

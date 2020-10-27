@@ -2,18 +2,23 @@ class BooksController < ApplicationController
 
   def index
     @books = Book.all
+    @user = current_user
+    @book = Book.new
   end
 
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
     @book.save
-    redirect_to book_path(@book)
+    redirect_to book_path(@book.id)
     # （）内でどのbookに飛ぶか指定
   end
 
   def show
+    # 投稿したユーザの情報
     @book = Book.find(params[:id])
+    @user = @book.user
+    @books = Book.new
   end
 
   def edit
@@ -29,7 +34,7 @@ class BooksController < ApplicationController
   def update
    book = Book.find(params[:id])
    book.update(book_params)
-   redirect_to book_path(book)
+   redirect_to book_path(book), notice: 'You have created book successfully.'
   end
 
   def destroy
