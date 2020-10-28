@@ -20,6 +20,8 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
+      # 手本では表示されていない
+      flash[:notice] = 'successfully.'
       redirect_to user_path(@user)
     else
       render :edit
