@@ -1,4 +1,5 @@
-<% if @user.errors.any? %>
+<div class="container">
+  <% if @user.errors.any? %>
     <div id="error_explanation">
       <h3><%= pluralize(@user.errors.count, "error") %> prohibited this book from being saved:</h3>
       <ul>
@@ -8,24 +9,25 @@
       </ul>
     </div>
   <% end %>
-<h2>User info</h2>
-<%= form_with model: @user, local: true do |f| %>
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <h2>User info</h2>
+  <%= form_with model: @user, local: true do |f| %>
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
 
-  <div class="field">
-  <%= f.label :Image %>
-  <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
-  </div>
+    <div class="field">
+    <%= f.label :Image %>
+    <%= f.attachment_field :profile_image, placeholder: "プロフィール画像" %>
+    </div>
 
-  <div class="field">
-    <%= f.label :Introduction %>
-    <%= f.text_area :introduction %>
-  </div>
+    <div class="field">
+      <%= f.label :Introduction %>
+      <%= f.text_area :introduction %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Update User" %>
-  </div>
-<% end %>
+    <div class="actions">
+      <%= f.submit "Update User" %>
+    </div>
+  <% end %>
+</div>

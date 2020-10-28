@@ -1,6 +1,4 @@
 class ApplicationController < ActionController::Base
-  before_action :authenticate_user!
-  # ログイン認証されていなければ、ログイン画面にリダイレクト
   before_action :configure_permitted_parameters, if: :devise_controller?
 
   def after_sign_in_path_for(resource)
