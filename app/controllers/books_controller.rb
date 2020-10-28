@@ -22,9 +22,9 @@ class BooksController < ApplicationController
 
   def show
     # 投稿したユーザの情報
-    @book = Book.find(params[:id])
-    @user = @book.user
-    @books = Book.new
+    @current_user_book = Book.find(params[:id])
+    @user = @current_user_book.user
+    @book = Book.new
   end
 
   def edit

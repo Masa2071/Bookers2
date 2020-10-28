@@ -2,46 +2,8 @@
   <div class="container">
      <%= render 'layouts/notifications' %>
       <div class="row">
-        <div class="col-xs-3">
-          <h2>User info</h2>
-            <p><%= attachment_image_tag @user, :profile_image, :fill, 100, 100, fallback: "no_image.jpg" %></p>
-             <table class="table">
-             <tbody>
-              <tr></tr>
-              <tr>
-            	  <th>name</th>
-            	  <th><%= @user.name %></th>
-              </tr>
-              <tr>
-            	  <th>introduction</th>
-            	  <th><%= @user.introduction %></th>
-              </tr>
-            </tbody>
-            </table>
-        <div class="row">
-           <% if @user.id ==  current_user.id %>
-              <%= link_to "", edit_user_path(@user), class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
-            <% else %>
-            <!--ログインしたユーザの詳細に戻る-->
-              <%= link_to "", user_path(current_user),class: "col-xs-12 btn btn-default glyphicon glyphicon-wrench" %>
-            <% end %>
-        </div>
-          <h2>New book</h2>
-          <%= form_with model: @book, local: true do |f| %>
-          <div class="field row">
-            <%= f.label :Title %><br/>
-            <%= f.text_field :title, :class => "col-xs-12" %>
-          </div>  
-          <div class="field row">
-            <%= f.label :Opinion %><br />
-            <%= f.text_area :body, :class => "col-xs-12" %>
-          </div>  
-            <div class="actions row"><br />
-              <%= f.submit "Create Book", class: "btn btn-primary col-xs-12" %>
-            </div>
-          <% end %>
-        </div>
-
+        <%= render 'layouts/profile', user: @user %>
+        
         <div class="col-xs-9">
           <h2>Books</h2>
           <table class="table table-hover table-inverse">
